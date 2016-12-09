@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <script>
+        var myNamespace = (function() {
+            var myPrivateVar, myPrivateMethod;
+
+            // A private counter variable
+            myPrivateVar = 0;
+
+            // A private function which logs any arguments
+            myPrivateMethod = function(foo) {
+                console.log(foo);
+            };
+
+            return {
+
+                // A public variable
+                myPublicVar: 'foo',
+
+                // A public function utilizing privates
+                myPublicFunction: function(bar) {
+                    // Increment private counter
+                    myPrivateVar++;
+
+                    // Call private method using bar
+                    myPrivateMethod(bar);
+                }
+            };
+        })();
+
+        console.log(myNamespace.myPublicVar);   // foo
+        myNamespace.myPublicFunction('bar');    // bar
+    </script>
+    </body>
+</html>

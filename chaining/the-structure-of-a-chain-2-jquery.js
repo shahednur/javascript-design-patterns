@@ -10,6 +10,8 @@
             this.elements.push(element);
         }
     }
+
+    // Since all objects inherit from their prototype, you can take advantage of the reference to the instance object being returned and run each of the methods attached to the prototype as a chain.
     _$.prototype = {
         each: function(fn) {
             for (var i = 0, len = this.elements.length; i < len; ++i) {
@@ -49,8 +51,6 @@
         return new _$(arguments);
     };
 })();
-
-// Since all objects inherit from their prototype, you can take advantage of the reference to the instance object being returned and run each of the methods attached to the prototype as a chain.
 
 // If you examine the last line in each method of the class, you'll notice that they all end in return this . This passes on the object to the next method in the chain. With a chainable interface, the possibilities are limitless. You can now start writing code like this: 
 $(window).addEvent('load', function() { 
